@@ -29,3 +29,9 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+bootRun {
+    args = ["--spring.profiles.active=dev"]
+    systemProperties = System.properties
+    systemProperty "spring.config.location", "classpath:/application-dev.yml"
+}
