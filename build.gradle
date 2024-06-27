@@ -29,12 +29,14 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'me.dio.Application'
+        )
+    }
 }
 
-bootRun {
-    args = ["--spring.profiles.active=dev"]
-    systemProperties = System.properties
-    systemProperty "spring.config.location", "classpath:/application-dev.yml"
+tasks.named('test') {
+	useJUnitPlatform()
 }
